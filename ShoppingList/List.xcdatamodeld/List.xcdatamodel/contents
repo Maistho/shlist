@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="List" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="has" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListItem" inverseName="belongsTo" inverseEntity="ListItem" syncable="YES"/>
+    </entity>
+    <entity name="ListItem" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="checked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="has" inverseEntity="List" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="List" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="ListItem" positionX="180" positionY="-4" width="128" height="103"/>
+    </elements>
+</model>
