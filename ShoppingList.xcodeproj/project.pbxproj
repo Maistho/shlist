@@ -10,7 +10,7 @@
 		707040EF1987BE6200F2E646 /* checkBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 707040ED1987BE6200F2E646 /* checkBox.png */; };
 		707040F01987BE6200F2E646 /* checkBoxMarked.png in Resources */ = {isa = PBXBuildFile; fileRef = 707040EE1987BE6200F2E646 /* checkBoxMarked.png */; };
 		707040F31987D6F200F2E646 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 707040F21987D6F200F2E646 /* CustomCell.m */; };
-		707040F71987E6BB00F2E646 /* List.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707040F51987E6BB00F2E646 /* List.xcdatamodeld */; };
+		707040F71987E6BB00F2E646 /* ShoppingList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 707040F51987E6BB00F2E646 /* ShoppingList.xcdatamodeld */; };
 		70A754EE198624FA00E0B5CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A754ED198624FA00E0B5CD /* Foundation.framework */; };
 		70A754F0198624FA00E0B5CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A754EF198624FA00E0B5CD /* CoreGraphics.framework */; };
 		70A754F2198624FA00E0B5CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A754F1198624FA00E0B5CD /* UIKit.framework */; };
@@ -48,7 +48,7 @@
 		707040F11987D6F200F2E646 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		707040F21987D6F200F2E646 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		707040F41987D9EF00F2E646 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		707040F61987E6BB00F2E646 /* List.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = List.xcdatamodel; sourceTree = "<group>"; };
+		707040F61987E6BB00F2E646 /* ShoppingList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingList.xcdatamodel; sourceTree = "<group>"; };
 		70A754EA198624FA00E0B5CD /* ShoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A754ED198624FA00E0B5CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		70A754EF198624FA00E0B5CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,7 +142,7 @@
 				70A754FF198624FA00E0B5CD /* Main_iPhone.storyboard */,
 				707040F11987D6F200F2E646 /* CustomCell.h */,
 				707040F21987D6F200F2E646 /* CustomCell.m */,
-				707040F51987E6BB00F2E646 /* List.xcdatamodeld */,
+				707040F51987E6BB00F2E646 /* ShoppingList.xcdatamodeld */,
 				70A75502198624FA00E0B5CD /* Main_iPad.storyboard */,
 				707040F41987D9EF00F2E646 /* MasterViewController.h */,
 				70A75506198624FA00E0B5CD /* MasterViewController.m */,
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				707040F71987E6BB00F2E646 /* List.xcdatamodeld in Sources */,
+				707040F71987E6BB00F2E646 /* ShoppingList.xcdatamodeld in Sources */,
 				70A754FE198624FA00E0B5CD /* AppDelegate.m in Sources */,
 				70A7552B19864DAE00E0B5CD /* ShoppingItemTableViewCell.m in Sources */,
 				707040F31987D6F200F2E646 /* CustomCell.m in Sources */,
@@ -524,13 +524,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		707040F51987E6BB00F2E646 /* List.xcdatamodeld */ = {
+		707040F51987E6BB00F2E646 /* ShoppingList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				707040F61987E6BB00F2E646 /* List.xcdatamodel */,
+				707040F61987E6BB00F2E646 /* ShoppingList.xcdatamodel */,
 			);
-			currentVersion = 707040F61987E6BB00F2E646 /* List.xcdatamodel */;
-			path = List.xcdatamodeld;
+			currentVersion = 707040F61987E6BB00F2E646 /* ShoppingList.xcdatamodel */;
+			path = ShoppingList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

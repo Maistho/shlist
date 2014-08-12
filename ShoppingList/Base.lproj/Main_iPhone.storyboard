@@ -35,16 +35,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Milk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-cM-Hub">
-                                            <rect key="frame" x="20" y="7" width="150" height="44"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Product" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsN-cM-Hub" userLabel="ProductLabel">
+                                            <rect key="frame" x="20" y="19" width="184" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="FN1-97-uvL"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-cV-ogz">
+                                        <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cO8-68-jiy" userLabel="AmountLabel">
+                                            <rect key="frame" x="212" y="18" width="60" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="T94-RE-RtX"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-cV-ogz" userLabel="Checkbox">
                                             <rect key="frame" x="280" y="18" width="20" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="1Mo-Ee-E4V"/>
+                                                <constraint firstAttribute="width" constant="20" id="45q-3s-iCF"/>
+                                            </constraints>
                                             <state key="normal" image="checkBox.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -52,18 +69,54 @@
                                                 <action selector="clickbutton:" destination="Pae-v3-4jO" eventType="touchUpInside" id="uaX-YU-Zqt"/>
                                             </connections>
                                         </button>
-                                        <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2l" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cO8-68-jiy">
-                                            <rect key="frame" x="178" y="18" width="94" height="21"/>
+                                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQt-3K-wEW" userLabel="ProductTextField">
+                                            <rect key="frame" x="20" y="14" width="100" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="n7H-F8-jhu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="ProductTextFieldEditingDidEnd:" destination="Pae-v3-4jO" eventType="editingDidEnd" id="lpZ-Hc-PIu"/>
+                                            </connections>
+                                        </textField>
+                                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2s1-uS-fjb" userLabel="AmountTextField">
+                                            <rect key="frame" x="215" y="14" width="60" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="s8e-jg-aKI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="AmountTextFieldEditingDidEnd:" destination="Pae-v3-4jO" eventType="editingDidEnd" id="CC4-EX-S8o"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cO8-68-jiy" firstAttribute="centerY" secondItem="2s1-uS-fjb" secondAttribute="centerY" constant="-0.5" id="7R9-cK-Otm"/>
+                                        <constraint firstItem="cO8-68-jiy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hsN-cM-Hub" secondAttribute="trailing" id="CSN-yC-3S1"/>
+                                        <constraint firstItem="pFf-cV-ogz" firstAttribute="leading" secondItem="cO8-68-jiy" secondAttribute="trailing" constant="8" id="Gri-5A-BLj"/>
+                                        <constraint firstAttribute="centerY" secondItem="cO8-68-jiy" secondAttribute="centerY" constant="0.5" id="Jwf-TV-hvB"/>
+                                        <constraint firstItem="hsN-cM-Hub" firstAttribute="centerY" secondItem="YQt-3K-wEW" secondAttribute="centerY" id="X7s-up-1R8"/>
+                                        <constraint firstAttribute="centerY" secondItem="YQt-3K-wEW" secondAttribute="centerY" id="cCB-BS-KgK"/>
+                                        <constraint firstItem="YQt-3K-wEW" firstAttribute="leading" secondItem="xcv-rf-XEs" secondAttribute="leading" constant="20" id="fUH-eT-kHv"/>
+                                        <constraint firstItem="cO8-68-jiy" firstAttribute="leading" secondItem="hsN-cM-Hub" secondAttribute="trailing" constant="8" id="fhi-cc-Qzb"/>
+                                        <constraint firstAttribute="trailing" secondItem="pFf-cV-ogz" secondAttribute="trailing" constant="20" id="iF8-7i-IeQ"/>
+                                        <constraint firstItem="2s1-uS-fjb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQt-3K-wEW" secondAttribute="trailing" constant="3" id="nta-Xk-gat"/>
+                                        <constraint firstItem="cO8-68-jiy" firstAttribute="trailing" secondItem="2s1-uS-fjb" secondAttribute="trailing" constant="-3" id="o7S-cA-gOu"/>
+                                        <constraint firstItem="cO8-68-jiy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQt-3K-wEW" secondAttribute="trailing" id="wpJ-Q6-ic4"/>
+                                        <constraint firstAttribute="centerY" secondItem="pFf-cV-ogz" secondAttribute="centerY" id="xJZ-m2-Yrb"/>
+                                        <constraint firstAttribute="centerY" secondItem="2s1-uS-fjb" secondAttribute="centerY" id="yTc-pZ-VWa"/>
+                                        <constraint firstItem="hsN-cM-Hub" firstAttribute="leading" secondItem="YQt-3K-wEW" secondAttribute="leading" id="yn7-lu-dTA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="AmountLabel" destination="cO8-68-jiy" id="joW-Ik-g4w"/>
+                                    <outlet property="AmountTextField" destination="2s1-uS-fjb" id="Qm5-AU-ebv"/>
                                     <outlet property="ProductLabel" destination="hsN-cM-Hub" id="Q1M-H5-FAA"/>
-                                    <outlet property="amount" destination="cO8-68-jiy" id="IWH-cG-Vmp"/>
+                                    <outlet property="ProductTextField" destination="YQt-3K-wEW" id="qlJ-ru-2X0"/>
                                     <outlet property="checkbutton" destination="pFf-cV-ogz" id="dWG-ib-bMy"/>
                                     <segue destination="Ah7-4n-0Wa" kind="push" identifier="showDetail" id="1cO-aY-JFB"/>
                                 </connections>

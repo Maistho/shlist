@@ -53,6 +53,7 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView seted]
 }
 
 #pragma mark - Table View
@@ -69,8 +70,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+
     NSString *CellIdentifier = @"ShoppingCell";
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
@@ -79,6 +79,10 @@
     }
     int row = [indexPath row];
     NSDate *object = _objects[row];
+    if (self.editing) {
+        cell.ProductLabel.text = @"hej";
+        
+    }
     return cell;
 }
 
@@ -86,6 +90,11 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
