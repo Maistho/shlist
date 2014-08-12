@@ -15,9 +15,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [delegate managedObjectContext];
-        _product = [NSEntityDescription insertNewObjectForEntityForName:@"ListItem" inManagedObjectContext:context];
 
     }
     return self;
@@ -25,6 +22,9 @@
 
 - (void)awakeFromNib
 {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    _product = [NSEntityDescription insertNewObjectForEntityForName:@"ListItem" inManagedObjectContext:context];
     // Initialization code
 //    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 //    NSManagedObjectContext *context = [delegate managedObjectContext];

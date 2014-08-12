@@ -99,7 +99,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ShoppingList" withExtension:@"momd+"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ShoppingList" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -116,7 +116,17 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        
+        // Fix for schema incompatibility
+        NSLog(@"Error %@, %@", error, [error userInfo]);
+        NSLog(@"Removing store...");
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        NSLog(@"Done!");
+        if ([_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+            return _persistentStoreCoordinator;
+        }
         /*
          Replace this implementation with code to handle the error appropriately.
          
