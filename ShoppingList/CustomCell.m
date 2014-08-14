@@ -10,6 +10,7 @@
 
 @implementation CustomCell
 
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -22,33 +23,12 @@
 
 - (void)awakeFromNib
 {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    _product = [NSEntityDescription insertNewObjectForEntityForName:@"ListItem" inManagedObjectContext:context];
     // Initialization code
-//    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-//    NSManagedObjectContext *context = [delegate managedObjectContext];
-//    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:context];
-//    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//    [request setEntity:entityDesc];
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", _l1.text];
-//    [request setPredicate:pred];
-//    NSManagedObject *matches = nil;
-//    NSError *error;
-//    
-//    NSArray *objects = [context executeFetchRequest:request error:&error];
-//    
-//    if ([objects count] == 0) {
-//        _status.text = @"no matches";
-//    } else {
-//        matches = objects[0];
-//        _l1.text = [matches valueForKey:@"name"];
-//        _l2.text = [matches valueForKey:@"price"];
-//    }
     
    // self.amount.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
    // [self.amount sizeToFit];
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -73,6 +53,11 @@
     [self.AmountTextField endEditing:YES];
 }
 
+- (void)reloadProduct
+{
+    _ProductLabel.text = _ProductTextField.text = [_product valueForKey:@"name"];
+    _AmountLabel.text = _AmountTextField.text = [_product valueForKey:@"amount"];
+}
 
 
 - (IBAction)ProductTextFieldEditingDidEnd:(id)sender

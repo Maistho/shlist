@@ -21,6 +21,8 @@
 - (IBAction)ProductTextFieldEditingDidEnd:(id)sender;
 - (IBAction)AmountTextFieldEditingDidEnd:(id)sender;
 
+- (void)reloadProduct;
+
 @property BOOL checked;
 @property NSManagedObject *product;
 

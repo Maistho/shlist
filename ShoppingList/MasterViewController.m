@@ -11,7 +11,7 @@
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *_products;
 }
 @end
 
@@ -37,6 +37,25 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
         self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    if (!_products) {
+        _products = [[NSMutableArray alloc] init];
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = [delegate managedObjectContext];
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"ListItem"
+                                                  inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        
+        NSError *error;
+        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObjects == nil) {
+            // Handle the error.
+        }
+        if ([fetchedObjects count] > 0) {
+            _products = [fetchedObjects mutableCopy];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,10 +66,11 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSManagedObject *product = [NSEntityDescription insertNewObjectForEntityForName:@"ListItem" inManagedObjectContext:context];
+
+    [_products insertObject:product atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -64,24 +84,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _products.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSString *CellIdentifier = @"ShoppingCell";
+    static NSString *CellIdentifier = @"ShoppingCell";
+    
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
         cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    int row = [indexPath row];
-    NSDate *object = _objects[row];
-    if (self.editing) {
-        cell.ProductLabel.text = @"hej";
-        
-    }
+    cell.product = _products[indexPath.row];
+    [cell reloadProduct];
     return cell;
 }
 
@@ -94,7 +110,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [_products removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -120,8 +136,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = _objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        NSManagedObject *product = _products[indexPath.row];
+        self.detailViewController.detailItem = product;
     }
     //Toggle checkmark
     
@@ -131,8 +147,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        NSDate *product = _products[indexPath.row];
+        [[segue destinationViewController] setDetailItem:product];
     }
 }
 

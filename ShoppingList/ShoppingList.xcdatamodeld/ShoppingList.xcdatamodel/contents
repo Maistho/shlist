@@ -10,6 +10,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="has" inverseEntity="List" syncable="YES"/>
     </entity>
+    <fetchRequest name="getAll" entity="ListItem"/>
     <elements>
         <element name="List" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ListItem" positionX="0" positionY="0" width="128" height="103"/>
